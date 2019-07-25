@@ -25,8 +25,7 @@ export class HomePage implements OnInit {
     this.jokesService.getAllJokes().subscribe(piadas => {
       if (this.termoDeBusca != undefined && this.termoDeBusca != null && this.termoDeBusca.trim() != '') {
         this.piadas = piadas.filter(p => { 
-            if (p.pergunta.toLowerCase().match(this.termoDeBusca.trim().toLowerCase())
-            || p.resposta.toLowerCase().match(this.termoDeBusca.trim().toLowerCase())) return p; 
+            if (p.pergunta.toLowerCase().match(this.termoDeBusca.trim().toLowerCase())) return p; 
         });
       } else {
         this.piadas = piadas;
@@ -53,5 +52,9 @@ export class HomePage implements OnInit {
     })
 
     await alert.present();
+  }
+
+  prepareToDetail(piada: any) {
+    this.jokesService.piadaSelecionada = piada;
   }
 }

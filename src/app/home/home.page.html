@@ -1,19 +1,21 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Ionic Blank
+      BonaJokes Home
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div class="ion-padding">
-    <ion-input [(ngModel)]="termoDeBusca" placeholder="Digite um termo" (keydown)="filtraPiadas()"></ion-input>
+    <ion-input [(ngModel)]="termoDeBusca" placeholder="Digite Para Buscar" (keydown)="filtraPiadas()"></ion-input>
     <img [src]=url alt="">
     <ion-button color="dark" expand="full" (click)="exebirPiada()">Exibir piada show!</ion-button>
     
     <div *ngFor="let p of piadas">
-        <div>{{p.pergunta.substring(0, 24) + ' ...'}}</div>
+      <a (click)="prepareToDetail(p)" [routerLink]="['/detalhe']">
+        <p><b>Pergunta:</b> {{p.pergunta}}</p>
+      </a>
     </div>
   </div>
 </ion-content>
